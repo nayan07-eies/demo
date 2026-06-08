@@ -1,0 +1,169 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="description" content="basic of html"> #serch engin figure about what is this page about
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> #display according to the device
+        <link rel="stylesheet" href="style.css">
+        <title>web page</title>
+        <style>
+            table{
+                border-collapse: collapse;
+                border-radius: 18px;
+            }
+            tr{
+                background-color: rgb(244, 209, 9);
+                font-family: Arial, Helvetica, sans-serif;
+            }
+            th{
+                text-align: center;
+                background-color: lightcoral;
+                font-family: Arial, Helvetica, sans-serif;
+            }
+             
+            
+        </style>
+
+    </head>
+    <body>
+        <header class="header">
+            <h1 align="center">Welcome to My Web Page</h1>
+        </header>
+       <table BORDER="1" ALIGN="CENTER" CELLPADDING="10" CELLSPACING="0">
+        <tr>
+            <th>Subject</th>
+            <th>Grade</th>
+            <th>Mentor</th>
+        </tr>
+        <tr>
+            <td>Math</td>
+            <td>A</td>
+            <td>DILIPSIR</td>
+        </tr>
+        <tr>
+            <td>IOT</td>
+            <td>A+</td>
+            <td>MEENAKSHI MADAM</td>
+        </tr>
+            <tr>
+                <td>DSA</td>
+                <td>A+</td>
+                <td>MEGHA MADAM</td>
+            </tr>   
+       </table>
+       <table BORDER="1" ALIGN="CENTER" CELLPADDING="10" >
+        <TR ALIGN="CENTER">
+            <td COLSPAN="2">CELL1</td>
+            <td>CELL2</td>
+            <td>CELL3</td>
+        </TR>
+       <TR>
+        <TD ROWSPAN="3">CELL4</TD>
+        <TD>CELL5</TD>
+        <TD>CELL6</TD>
+        <TD>CELL7</TD>   
+       </TR>
+       <tr ALIGN="CENTER">
+        <td COLSPAN="3">CELL8</td>
+       </tr>
+         <TR>
+          <TD>CELL9</TD>
+          <TD colspan="2" ALIGN="CENTER">CELL10</TD>
+         </TR>
+       </table>
+       <br>
+
+<hr>
+       <form align="left">
+        <fieldset>
+        <legend align="center">Registration Form</legend>
+        <label>Full name:</label><br>
+        <input type="text" placeholder="Enter Your Full name">
+        <br><br>
+        <label>Enter your Email:</label><br>
+        <input type="email" placeholder="Enter Your Email">
+        <br><br>
+        <label>Enter you password</label><br>
+        <input type="password" placeholder="Enter Your Password"><br><br>
+        <label>Confirm your password</label><br>
+        <input type="password" placeholder="Confirm Your Password"><br><br>
+        <lable>Select your gender</lable><br>
+        <input type="radio" name="g1" id="Gender">male
+        <input type="radio" name="g1" id="Gender">female
+        <input type="radio" name="g1" id="Gender">other<br>
+        <lable>Enter your Date of Birth:</lable><br>
+        <input type="date"><br><br>
+        <lable>City:</lable><br>
+        <select>
+            <option value="select">Select</option>
+            <option value="chennai" id="city">Chennai</option>
+            <option value="bangalore" id="city">Bangalore</option>
+            <option value="coimbatore" id="city">Surat</option>
+            <option value="madurai" id="city">Ahamdabad</option>
+        </select><br><br>
+        <lable> Enter your Address:</lable><br>
+        <input type="text" placeholder="Enter Your Address"><br><br>
+        <lable>Enter your Phone Number:</lable><br>
+        <input type="number" placeholder="Enter Your Phone Number"><br><br>
+        <input type="submit" onclick="window.open('page.html', '_blank')" style="background-color: rgb(43, 200, 93);color: black; padding: 10px 20px;border: none;border-radius: 4px;cursor: pointer">
+        
+        <input type="reset" style="background-color: rgb(43, 200, 93);color: black; padding: 10px 20px;border: none;border-radius: 4px;cursor: pointer">
+        <br><br>
+        </fieldset>
+        </form>
+   <hr>     
+        <a href="https://www.youtube.com/watch?v=pQN-pnXPaVg" target="_blank"><img src="https://picjumbo.com/wp-content/uploads/beautiful-nature-wallpaper-spring-flowers-mountain-sunset-free-image.jpg" width="500px" height="300px" >
+        </a><br>
+         <video width="400" height="300" controls></video>
+         <source src="https://www.youtube.com/watch?v=pQN-pnXPaVg" type="video/mp4"><br><br>
+         <iframe width="560" height="315" src="https://www.youtube.com/embed/pQN-pnXPaVg?si=piwjfohJi8Nm1CH-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+         <hr>    
+         <h3>List</h3>
+            <ul type="square">
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>JavaScript</li>
+            </ul>
+            <ol start="5" type="1">
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>JavaScript</li>     
+            </ol>
+
+            <span>span1</span>
+            <span>span2</span>
+            <div>div1</div>
+            <div>div2</div>
+            <a href>nayan</a>
+            <hr>
+            <section class="column">
+                <p>&#8220;Content&#8221; The core area where text, images, or child elements reside</p>
+                <p>Semantics: Provides meaning to the content, making it easier for search engines and assistive technologies to understand the structure of the page</p>
+                <p>Styling: Can be styled using CSS to control the layout, colors,
+            </section>
+            <p>and fonts of the content within the section.</p>
+            <hr>
+            <div class="container">
+                <h3>Flexbox Layout</h3>
+                <div class="box">Box 1</div>
+                <div class="box">Box 2</div>
+                <div class="box">Box 3</div>
+            </div>
+            <main class="main" style="background-color: rgb(244, 209, 9);">
+               
+                <div class="grid">Box 1</div>
+                <div class="grid">Box 2</div>
+                <div class="grid">Box 3</div>
+                <div class="grid">Box 4</div>
+                <div class="grid">Box 5 </div>
+                <div class="grid">Box 6</div>
+                 <h3 align="right">Grid Layout</h3>
+            </main>
+            <section>
+                 <p class="name">nayan</p>
+            </section>
+
+            <footer>
+                <p align="center" style="background-color: lightgray; color: lightgoldenrodyellow">Footer</p>
+            </footer>
+     </body>
+</html>
