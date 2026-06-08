@@ -1,0 +1,170 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+:root{
+    --w-color:rgb(255, 255, 255);
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #e8f5ff;
+  color: #1f2937;
+  line-height: 1.6;
+}
+
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  background: #85d8ee;
+  padding: 18px 24px;
+  border-radius: 14px;
+  margin: 20px auto;
+  max-width: 1100px;
+}
+
+.logo {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.navbar {
+  list-style: none;
+  display: flex;
+  gap: 18px;
+  
+}
+
+.navbar a {
+  color: var(--w-color);
+  text-decoration: none;
+  padding: 10px 14px;
+  border-radius: 10px;
+  transition: background 0.2s ease;
+}
+
+.navbar a:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+main {
+  max-width: 1100px;
+  margin: 0 auto 24px;
+  padding: 0 24px;
+}
+
+.section-card {
+  position: relative;
+  background: var(--w-color);
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 24px;
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.08);
+  
+}
+
+.hero {
+  background: #d4efff;
+}
+
+.contact-form label {
+  display: block;
+  margin-top: 18px;
+  font-weight: 600;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  margin-top: 8px;
+  padding: 12px 14px;
+  border: 1px solid #c6ddf2;
+  border-radius: 12px;
+  background: #f7fbff;
+}
+
+.contact-form button {
+  margin-top: 18px;
+  padding: 12px 18px;
+  border: none;
+  border-radius: 12px;
+  background: #2a87c9;
+  color: var(--w-color);
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.contact-form button:hover {
+  background: #1f6ca8;
+  transform: translateY(-1px);
+}
+
+.contact-form button:focus-visible,
+.contact-form input:focus-visible,
+.contact-form textarea:focus-visible,
+.navbar a:focus-visible {
+  outline: 3px solid rgba(58, 159, 224, 0.6);
+  outline-offset: 3px;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 18px;
+}
+
+.gallery img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 16px;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.gallery img:hover {
+  transform: scale(1.03);
+  filter: brightness(1.04);
+}
+
+footer {
+  background: #85d8ee;
+  color: var(--w-color);
+  text-align: center;
+  padding: 18px 0;
+  border-radius: 14px;
+  max-width: 1100px;
+  margin: 0 auto 32px;
+}
+
+@media (max-width: 640px) {
+  .site-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .navbar {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .contact-form,
+  .section-card {
+    padding: 18px;
+  }
+}
+.aside{
+    padding-left: 10px;
+    /* background-color: rgb(190, 226, 248); */
+    border-radius: 18px;
+    margin-bottom: 16px;
+    padding-top: 5px;
+    text-align: left;
+    background-image: url("https://static.vecteezy.com/system/resources/thumbnails/038/936/853/small/sparkles-defocus-light-glitter-paper-defocus-as-background-blue-photo.jpg");
+}
+
