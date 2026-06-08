@@ -1,0 +1,142 @@
+form{
+                background-color: lightgreen;
+                /* font-size: 18px; */
+                font-family: Arial, Helvetica, sans-serif;
+                width: 400px;
+                margin-left: 450px;
+            }
+             fieldset{
+                border: 2px solid black;
+            }
+             legend{
+                font-size: 20px;
+                font-weight: bold;
+            } 
+                input[type="text"], input[type="email"], input[type="password"], input[type="date"], input[type="number"]{
+                    width: 100%;
+                    padding: 8px;
+                    margin-bottom: 10px;
+                    border: 1px solid #ccc;
+                    border-radius: 4px;
+                } 
+                select{
+                    width: 100%;
+                    padding: 8px;
+                    margin-bottom: 10px;
+                    border: 1px solid #ccc;
+                    border-radius: 4px;
+                }
+
+                #city{
+                    color: red;
+                    background-color: lightblue;
+                    font-size: 16px;
+                    width: 100%;
+                    padding: 8px;
+                    margin-bottom: 10px;
+                    border: 1px solid #ccc;
+                    border-radius: 4px;
+                }
+               ul{
+                border: 2px solid  black;
+                width: 100px;
+                background-color: lightblue;
+                
+                border-radius: 20px solid;
+                outline: 2px solid blue;
+                text-shadow: 2px 2px 5px red;
+               }
+               a:hover:focus{
+                font-size: 20px;
+                background-color: lightblue;
+               }
+            
+            ol{
+                list-style-type: upper-roman;
+                
+            }
+            ul{
+                list-style-position: left;
+                list-style-type: circle;
+                list-style-image: url("https://cdn-icons-png.flaticon.com/512/25/25231.png") width="20" height="20";
+            }
+            div{
+                display: inline-block;
+            }
+            span{
+                display:flex;
+            }
+            img{
+                float: right;
+                filter: blur(1px);
+                border-radius: 50%;
+                box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+                
+            }
+            /* li{
+                float: right;
+            } */
+             ol{
+                float: right;
+             }
+             .column{
+                column-count: 2;
+                column-width: 200px;
+                column-rule: 1px solid black;
+                column-gap: 3rem;
+             }
+             .header{
+                position: sticky;
+                top: 0;
+             }
+             .container{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                flex-direction: column-reverse;
+                float: right;
+             }  
+                .box{
+                    text-align: center;
+                    width: 50px;
+                    height: 50px;
+                    background-color: lightblue;
+                    margin: 10px;
+                } 
+                .main{
+                    min-height: 400px;
+                    display: grid;
+                    grid-template-columns: repeat(1, 1fr,2fr);
+                    grid-auto-rows: minmax(150px, auto);
+                    row-gap: 1em;
+                    }
+                .grid{
+                    text-align: center;
+                    width: 50px;
+                    height: 50px;
+                    margin: 10px;
+                    background-color: lightblue;
+                    color: red;
+                    padding: 0.5rem;
+                }
+                .grid:first-child{
+                    background-color: lightgreen;
+                    grid-column-start: 1;
+                    grid-column-end: 3;
+                }
+                .grid:nth-child(2){
+                    background-color: lightpink;
+                    grid-row-start: 2;
+                    grid-row-end: 4;
+                } 
+                 .name{
+                     font-weight: 800;
+                    font-size: 10rem;
+                    text-align: center;
+                    background-image: url("https://www.garn.org/wp-content/uploads/2020/10/1-1.jpg");
+                    background-size: 100%;
+                    text-transform: uppercase;
+                    -webkit-background-clip: text;
+                    background-clip: text;
+                    color: transparent;
+                }
