@@ -58,7 +58,8 @@ body.mode {
     padding-left: 150px;
 }
 .Hero{
-    background-image: url("./heropage.jpg");
+    background-image: url("git/Practice/heropage.jpg");
+
     min-width: 100px;
     height: 200px;
     border-radius: 18px;

@@ -1,0 +1,263 @@
+    <!-- <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../build/css/style.css">
+        <title>Document</title>
+    </head>
+    <body class="min-h-screen grid place-content-center">
+        <div class="bg-emerald-500 w-52 h-56 rounded-full shadow-2xl shadow-amber-300 grid place-content-center">
+            <div class="bg-amber-400 w-40 h-40 rounded-full">
+                <div class="font-mono from-neutral-900 text-3x1 text-mauve-600 item">
+                    hii
+                </div>
+            </div>
+        </div>
+
+        <div class="flex flex-row rounded-3xl aspect-square bg-amber-950 mr-12 p-10 border-2 border-amber-500 justify-center h-64">
+            <div class="rounded-4xl bg-amber-500 w-36 h-36"><img class="mx-auto pt-8 w-18 h-30 rounded-full" src="p3.avif" alt="image"></div>
+            <div class="p-10 text-center sm:text-left">
+                <div class="flex-row">
+                    <p class="text-base  font-stretch-semi-expanded text-amber-500">Username</p>
+                    <p class="text-sm font-stretch-semi-expanded text-amber-500">password</p>
+                </div class="mt-3">
+                <div><button class=" mt-10 border-amber-600 text-amber-400 border-2 hover:bg-amber-300 bg-amber-800">Submit</button></div>
+            </div>
+        </div>
+    </body>
+    </html>-->
+
+    <!DOCTYPE html>
+    <html>
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link rel="stylesheet" href="../build/css/style.css">
+            <title>Techpage</title>
+        </head>
+        <body>
+            <script src="main.js" defer></script>
+            <header class="bg-amber-600 shadow-md">
+    <nav class="max-w-7xl mx-auto flex items-center justify-between px-6 py-3">
+        <div class="flex items-center gap-3">
+            <img class="w-12 h-12 rounded-full" src="./image/logo.jpg" alt="Logo">
+            <span class="font-bold text-xl text-white">TechPage</span>
+        </div>
+
+        <div class="hidden md:flex items-center gap-6">
+            <a href="#home">Home</a>
+            <a href="#Features">Features</a>
+            <a href="#About">About</a>
+            <a href="#Pricing">Pricing</a>
+            <a href="#Client">Review</a>
+            <a href="#Contact">Contact</a>
+        </div>
+
+        <div class="flex gap-2">
+            <button class="px-4 py-2 border rounded hover:bg-amber-500">
+                Get Started
+            </button>
+
+            <button class="px-4 py-2 border rounded hover:bg-amber-500">
+                Dark Mode
+            </button>
+        </div>
+    </nav>
+</header>
+            <section id="home"
+class="mt-6 rounded-3xl min-h-[70vh] flex flex-col justify-center items-center text-center bg-cover"
+style="background-image:url('https://png.pngtree.com/thumb_back/fh260/background/20240919/pngtree-a-background-of-orange-blue-and-yellow-gradients-with-gritty-appearance-image_16233934.jpg')">
+
+    <h1 class="text-4xl md:text-6xl font-bold text-blue-400">
+        Build The Future <br> With Us
+    </h1>
+
+    <p class="mt-4 text-white shadow-black  text-lg">
+        Powerful tools to help you build modern websites faster and easier.
+    </p>
+
+    <div class="flex gap-4 mt-6">
+        <button class="px-6 py-3 bg-amber-600 rounded-xl text-white hover:bg-amber-500">
+            Get Started
+        </button>
+
+        <button class="px-6 py-3 bg-white rounded-xl hover:bg-gray-100">
+            Learn More
+        </button>
+    </div>
+</section>
+<main>
+            <section id="Features" class="max-w-7xl mx-auto py-16">
+    <div class="text-center">
+        <h2 class="text-3xl font-bold">Amazing Features</h2>
+        <p>Everything you need to grow your business</p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8 mt-10">
+
+        <div class="border rounded-xl p-6 text-center">
+            <img class="w-20 mx-auto" src="./image/checklist.png">
+            <h4 class="font-bold mt-4">Fast Performance</h4>
+            <p>Optimized for speed and performance.</p>
+        </div>
+
+        <div class="border rounded-xl p-6 text-center">
+            <img class="w-20 mx-auto" src="./image/document.png">
+            <h4 class="font-bold mt-4">Responsive Design</h4>
+            <p>Looks perfect on all devices.</p>
+        </div>
+
+        <div class="border rounded-xl p-6 text-center">
+            <img class="w-20 mx-auto" src="./image/Square.png">
+            <h4 class="font-bold mt-4">Easy Customization</h4>
+            <p>Customize according to your needs.</p>
+        </div>
+
+    </div>
+</section>
+            <section class="max-w-7xl mx-auto py-16">
+            <div>
+        <form id="todo-form" class="form text-center">
+            <input class="border-2"
+                id="todo-input"
+                type="text"
+                placeholder="Write your TODO here"
+            >
+            <button class="todo border-2 bg-amber-400 " type="submit">Add</button>
+        </form>
+        <button class="text-center" id="user">
+        Load Users
+    </button>
+
+    <ul id="users"></ul>
+        <div id="todo-error"></div>
+
+        <ul id="todo-list"></ul>
+    </div>
+            </section>
+            <section id="Client" class="max-w-7xl mx-auto py-16">
+                <div class="text-center">
+                     <h2 class="text-3xl font-bold" >what Our Client Say</h2>
+                <p>Don't just take our word for it</p>
+                </div>
+                
+            
+            <div class="grid md:grid-cols-2 gap-8 mt-10">
+                <div class="border rounded-xl p-6 text-center">
+                <p>&#10077; Tech has transformed our business. The tools are intuitive and the results are amazing!</p>
+                <figure class="max-w-md mx-auto overflow-hidden bg-white rounded-xl shadow-md border border-slate-200 p-4 dark:bg-slate-800 dark:border-slate-700">
+                    <img class="w-24 h-24 rounded-full mx-auto mt-4 object-cover" src="image/p2.jpg" alt="client 1">
+                </figure>
+                <figcaption>Hii John</figcaption>
+                
+                <h4 class="font-bold mt-4">John Doe</h4>
+                <p>CEO, Company</p>
+                </div>
+                <div class="border rounded-xl p-6 text-center">
+                <p>&#10077; Tech has transformed our business. The tools are intuitive and the results are amazing!</p>
+                <img class="w-24 h-24 rounded-full mx-auto mt-4 object-cover" src="image/p1.jpg" alt="client 2">
+                <h4 class="font-bold mt-4">Jane Doe</h4>
+                <p>CEO, Company</p>
+                </div>
+            </div>
+            </section>
+            <section id="Pricing" class="max-w-7xl mx-auto py-16">
+                <div class="text-center">
+                    <h4 class="font-bold text-3xl">Simple, Transparent Pricing</h4>
+                <p>Choose the perfect plan for your needs</p>
+                </div>
+                <div class="grid md:grid-cols-3 gap-8 mt-10">
+                    <div class="border rounded-xl p-6 text-center">
+                        
+                        <p>Basic</p>
+                        <div class="price">$9<span class="months">/month</span></div>
+                        <ul>
+                            <li> 1 project</li>
+                            <li> basic support</li>
+                            <li> community access</li>
+                        </ul>
+                        <button class="btn">Choose Plan</button>
+                    </div>
+                    <div class="border rounded-xl p-6 text-center">
+                        <p>Pro</p>
+                        <div class="price">$19<span class="months">/month</span></div>
+                        <ul>
+                            <li> 10 projects</li>
+                            <li> Priority support</li>
+                            <li> Advanced analytics</li>
+                        </ul>
+                        <button class="btn">Choose Plan</button>
+                    </div>
+                    <div class="border rounded-xl p-6 text-center">
+                        <p>Enterprise</p>
+                        <div class="price">$99<span class="months">/month</span></div>
+                        <ul>
+                            <li> Unlimited projects</li>
+                            <li> 24/7 support</li>
+                            <li> Custom solutions</li>
+                        </ul>
+                        <button class="btn">Choose Plan</button>
+                    </div>
+                </div>
+            </section>
+            </main>
+            <footer class="bg-amber-600 mt-16">
+    <div class="max-w-7xl mx-auto grid md:grid-cols-5 gap-8 p-8">
+
+        <div>
+            <img class="w-12 rounded-full" src="./image/logo.jpg">
+            <p class="mt-3">
+                Tech helps you build better websites.
+            </p>
+        </div>
+
+        <div>
+            <h4 class="font-bold">Quick Links</h4>
+            <ul class="space-y-2 mt-2">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#Features">Features</a></li>
+                <li><a href="#Pricing">Pricing</a></li>
+            </ul>
+        </div>
+
+        <div>
+            <h4 class="font-bold">Company</h4>
+            <ul class="space-y-2 mt-2">
+                <li>About</li>
+                <li>Careers</li>
+                <li>Blog</li>
+            </ul>
+        </div>
+
+        <div>
+            <h4 class="font-bold">Support</h4>
+            <ul class="space-y-2 mt-2">
+                <li>Help Center</li>
+                <li>Privacy Policy</li>
+                <li>Status</li>
+            </ul>
+        </div>
+
+        <div>
+            <h4 class="font-bold">
+                Subscribe
+            </h4>
+
+            <form class="mt-3 flex flex-col gap-2">
+                <input
+                    class="border rounded p-2 bg-white"
+                    type="email"
+                    placeholder="Enter your email">
+
+                <button
+                    class="bg-black text-white p-2 rounded">
+                    Subscribe
+                </button>
+            </form>
+        </div>
+
+    </div>
+</footer>
+        </body>
+    </html>

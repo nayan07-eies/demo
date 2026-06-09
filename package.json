@@ -8,5 +8,23 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nayan07-eies/demo.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/nayan07-eies/demo/issues"
+  },
+  "homepage": "https://github.com/nayan07-eies/demo#readme",
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.3.0",
+    "autoprefixer": "^10.5.0",
+    "postcss": "^8.5.15",
+    "tailwindcss": "^4.3.0"
+  },
+  "dependencies": {
+    "element-plus": "^2.14.1"
   }
 }

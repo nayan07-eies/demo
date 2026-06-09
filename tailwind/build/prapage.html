@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Nature Gallery</title>
+</head>
+
+<body class="bg-green-50">
+
+<header class="bg-green-900 shadow-lg">
+    <nav class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
+
+        <div class="flex items-center gap-3">
+            <img
+                class="w-12 h-12 rounded-full object-cover"
+                src="./image/logo.jpg"
+                alt="Nature Logo">
+
+            <span class="text-white text-2xl font-bold">
+                Nature Gallery
+            </span>
+        </div>
+
+        <div class="hidden md:flex items-center gap-8 text-white font-medium">
+            <a href="#mountains" class="hover:text-green-300">Mountains</a>
+            <a href="#forests" class="hover:text-green-300">Forests</a>
+            <a href="#rivers" class="hover:text-green-300">Rivers</a>
+            <a href="#wildlife" class="hover:text-green-300">Wildlife</a>
+            <a href="#contact" class="hover:text-green-300">Contact</a>
+        </div>
+
+        <button
+            class="bg-white text-green-900 px-5 py-2 rounded-lg font-semibold hover:bg-green-100   transition duration-200">
+            Explore
+        </button>
+
+    </nav>
+</header>
+
+<section
+    class="min-h-[80vh] bg-cover bg-center flex items-center justify-center text-center px-6"
+    style="background-image:url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=2000');">
+
+    <div class="max-w-4xl">
+
+        <h1 class="text-5xl md:text-3xl font-bold text-white mb-6">
+            Explore Nature's Beauty
+        </h1>
+
+        <p class="text-lg md:text-xl text-white mb-8">
+            Discover breathtaking landscapes, peaceful forests,
+            majestic mountains, flowing rivers, and incredible wildlife.
+        </p>
+
+        <div class="flex flex-col sm:flex-row justify-center gap-4">
+
+            <button
+                class="bg-green-600 text-white px-6 py-3 rounded-xl hover:bg-green-700 transition">
+                View Collection
+            </button>
+
+            <button
+                class="bg-white text-green-900 px-6 py-3 rounded-xl hover:bg-gray-100 transition">
+                Learn More
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+<section class="max-w-7xl mx-auto py-16 px-6">
+
+    <h2 class="text-4xl font-bold text-center mb-12">
+        Nature Photo Collection
+    </h2>
+
+    <div class="grid md:grid-cols-4 grid-rows-3 gap-6">
+
+        <img class="rounded-2xl shadow-lg hover:scale-105 transition"
+            src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b"
+            alt="Mountain">
+
+        <img class="rounded-2xl shadow-lg hover:scale-105 transition"
+            src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e"
+            alt="Forest">
+
+        <img class="rounded-2xl shadow-lg hover:scale-105 transition"
+            src="https://images.unsplash.com/photo-1439066615861-d1af74d74000"
+            alt="River">
+
+        <img class="rounded-2xl shadow-lg hover:scale-105 transition"
+            src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e"
+            alt="Lake">
+
+        <img class="rounded-2xl shadow-lg hover:scale-105 transition"
+            src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee"
+            alt="Wildlife">
+
+        <img class="rounded-2xl shadow-lg hover:scale-105 transition"
+            src="https://images.unsplash.com/photo-1501785888041-af3ef285b470"
+            alt="Nature">
+    </div>
+
+</section>
+
+<footer class="bg-green-900 text-white mt-16">
+    <div class="max-w-7xl mx-auto px-6 py-12">
+
+        <div class="grid md:grid-cols-4 gap-8">
+            <div>
+                <h2 class="text-2xl font-bold mb-4">
+                    🌿 Nature Gallery
+                </h2>
+
+                <p class="text-green-200">
+                    Discover the beauty of nature through stunning
+                    photography from mountains, forests, rivers,
+                    wildlife, and breathtaking landscapes.
+                </p>
+            </div>
+
+            <div>
+                <h3 class="text-xl font-semibold mb-4">
+                    Quick Links
+                </h3>
+
+                <ul class="space-y-2 text-green-200">
+                    <li><a href="#home" class="hover:text-white">Home</a></li>
+                    <li><a href="#gallery" class="hover:text-white">Gallery</a></li>
+                    <li><a href="#about" class="hover:text-white">About</a></li>
+                    <li><a href="#contact" class="hover:text-white">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-xl font-semibold mb-4">
+                    Categories
+                </h3>
+
+                <ul class="space-y-2 text-green-200">
+                    <li>🏔 Mountains</li>
+                    <li>🌲 Forests</li>
+                    <li>🌊 Rivers</li>
+                    <li>🦌 Wildlife</li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-xl font-semibold mb-4">
+                    Subscribe
+                </h3>
+
+                <p class="text-green-200 mb-4">
+                    Get the latest nature photos and updates.
+                </p>
+
+                <form class="flex flex-col gap-3">
+                    <input
+                        type="email"
+                        placeholder="Enter your email"
+                        class="px-4 py-2 rounded-lg text-black bg-white focus:outline-none">
+
+                    <button
+                        class="bg-green-600 hover:bg-green-700 py-2 rounded-lg font-semibold transition">
+                        Subscribe
+                    </button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
