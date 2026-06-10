@@ -176,3 +176,79 @@ const caryear= new Date(car1.moDel)
 console.log(caryear.getFullYear())
 
 //document.getElementById('car2').innerHTML= car1.name
+
+//closure
+let xyz=2;
+const parentfun=()=>{
+    let one=1
+    console.log(one)
+    console.log(xyz+2)
+    const childfun=()=>{
+        console.log(one+4)
+        console.log(xyz+5)
+    }
+    return childfun
+}
+let out=parentfun()
+console.log(out)
+out();
+
+// hosti("name");
+// var hosti = (name)=>{
+//    console.log(`that's my name ${name}`) 
+// }
+
+name1('nayan')
+
+function name1(name1){
+    console.log(`whats you name${name1}`)
+}
+setTimeout(()=>{
+    console.log("timeout")
+},2000
+)
+
+//promise:- 1) fetch requies- 2)data get then display 3) otherwise error
+fetch(
+    "https://jsonplaceholder.typicode.com/users"
+)
+.then(response => response.json())
+.then(data => {
+    console.log(data);
+})
+.catch(error => {
+    console.log(error);
+});
+
+const copy =
+    document.getElementById("copy");
+
+copy.addEventListener("click", async () => {
+
+    const code =
+        document.getElementById("code").value;
+
+    try {
+
+        await navigator.clipboard.writeText(code);
+
+        copy.textContent =
+            "Copied!";
+
+    }
+    catch(error) {
+
+        console.log(error);
+
+    }
+
+});
+
+const phonePattern =
+    /^\d{10}$/;
+
+console.log(
+    phonePattern.test(
+        "987654321"
+    )
+);
