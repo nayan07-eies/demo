@@ -1,73 +1,52 @@
-# React + TypeScript + Vite
+# SaaSify - Modern React Landing Page
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A sleek, responsive, and performance-optimized SaaS landing page built with **React 19**, **Vite**, and **Tailwind CSS**.
 
-Currently, two official plugins are available:
+## 🚀 Recent Updates
+- **JSX :** The project has been fully migrated to pure JavaScript for simplicity and faster development cycles.
+- **UI/UX Refinement:** Toned down visual noise by standardizing the Features section, simplifying Hero gradients, and softening the Navbar border.
+- **React 19:** Leverages the latest React features and optimizations.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🛠️ Tech Stack
+- **Framework:** React 19 (JavaScript / JSX)
+- **Build Tool:** Vite
+- **Styling:** Tailwind CSS (Utility-first)
+- **Icons:** Lucide React
+- **Theme Management:** Custom Context-based Light/Dark mode.
+- **Utilities:** `clsx` and `tailwind-merge` for robust class management.
 
-## React Compiler
+## 📁 Key Components
+- **`/src/components/sections`**: Modular page sections (Hero, Features, Pricing, Navbar, Footer).
+- **`/src/components/ui`**: Atomic UI primitives (Button, Card) with standardized prop inference.
+- **`/src/context`**: `ThemeProvider` for site-wide theme persistence.
+- **`/src/hooks`**: Custom hooks like `useTheme`.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 💻 Getting Started
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Installation
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Development
+```bash
+npm run dev
 ```
+
+### Production Build
+```bash
+npm run build
+```
+
+### Linting
+```bash
+npm run lint
+```
+
+## 🎨 Design Principles
+- **Subtle Refinement:** Minimalist design with a focus on readability and cohesive branding.
+- **Responsive-First:** Fully optimized for mobile, tablet, and desktop viewing.
+- **Performance:** Optimized asset loading and component rendering.
+
+---
+*Part of the FSD Project Ecosystem.*
