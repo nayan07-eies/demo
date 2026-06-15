@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-primary: #3b82f6;
+  --color-secondary: #64748b;
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+:root {
+  background-color: #f8fafc76;
+  color: #0f172a;
+}
+
+.dark {
+  background-color: #020617;
+  color: #f8fafc76;
+}
+
+body {
+  @apply font-sans antialiased;
+}
