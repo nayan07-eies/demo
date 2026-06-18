@@ -1,73 +1,93 @@
-# React + TypeScript + Vite
+# NexusGear E-Commerce Prototype
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+NexusGear is a high-performance, front-end e-commerce prototype built with a custom "Cyber-Industrial" aesthetic. It demonstrates modern React architecture, complex global state management, and strict Role-Based Access Control (RBAC).
 
-Currently, two official plugins are available:
+![NexusGear Interface](public/favicon.svg)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🚀 Key Features
 
-## React Compiler
+### 🛍️ Storefront (User Experience)
+*   **Dynamic Catalog:** Browse products with real-time search, category filtering, and bidirectional price sorting.
+*   **Procurement Buffer (Cart):** Robust cart system with stock validation (prevents over-ordering), quantity controls, and dynamic pricing calculations.
+*   **Saved Gear (Wishlist):** Persisted wishlist functionality with live notification badges in the navigation header.
+*   **Distraction-Free Auth Flow:** A streamlined layout that hides shopping elements during the Login and Sign-Up processes.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### 🛡️ Security & Identity
+*   **Role-Based Access Control (RBAC):** Strict routing separation. 
+    *   `customer` accounts cannot access the terminal dashboard.
+    *   `admin` accounts are redirected away from the storefront catalog to the management terminal.
+*   **Authentication Persistence:** User data and sessions are persisted locally. Inputs are sanitized (trimmed and lowercased) to prevent common login errors.
 
-## Expanding the ESLint configuration
+### 🎛️ Terminal (Admin Experience)
+*   **Analytics Dashboard:** High-level metrics tracking revenue, total orders, and active customers.
+*   **Inventory Management:** A dedicated data table to track product names, categories, pricing, and exact stock levels (with dynamic color-coded warnings for low stock).
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### 🎨 Design System
+*   **Nexus Aesthetic:** A highly modern, frosted-glass design system with custom glowing scrollbars, animated hover states, and smooth CSS transitions.
+*   **Custom Dark Mode Engine:** A toggleable, global dark theme powered by Tailwind v4's CSS variables. It utilizes a custom color palette:
+    *   Background: `#1F2326`
+    *   Primary Text: `#E0E0E0`
+    *   Accent/CTA: `#FF6B35`
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 🛠️ Technology Stack
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+*   **Framework:** React 18
+*   **Build Tool:** Vite (for rapid HMR and optimized production builds)
+*   **Routing:** React Router v6
+*   **Styling:** Tailwind CSS v4 + PostCSS
+*   **Icons:** Lucide React
+*   **Testing:** Vitest + React Testing Library
+*   **Linting:** ESLint
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## 📦 Project Structure
+
+```text
+src/
+├── components/
+│   ├── auth/          # Authentication Guards & Routing Logic
+│   └── layout/        # Storefront & Admin Layout Wrappers
+├── context/           # Global State (Auth, Cart, Wishlist, Theme)
+├── features/          # Feature-based Component Modules
+│   ├── admin/         # Terminal Dashboard & Inventory
+│   ├── auth/          # Login & SignUp Forms
+│   ├── cart/          # Cart Interface
+│   ├── storefront/    # Catalog & Product Details
+│   └── wishlist/      # Saved Items Interface
+└── services/
+    ├── api.js         # Mock API Service (localStorage)
+    └── mockData.js    # Initial Product Database
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 💻 Local Setup & Development
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+1. **Install Dependencies:**
+   ```bash
+   npm install
+   ```
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+2. **Start the Development Server:**
+   ```bash
+   npm run dev
+   ```
+
+3. **Run Automated Tests:**
+   ```bash
+   npm run test
+   ```
+
+4. **Build for Production:**
+   ```bash
+   npm run build
+   ```
+
+## 🔑 Demo Accounts
+
+The application uses a simulated backend that persists data to `localStorage`. You can create your own account via the Sign Up page, or use the following pre-configured credentials:
+
+| Role | Email | Password |
+| :--- | :--- | :--- |
+| **Admin** | `admin@example.com` | `admin123` |
+| **User** | `user@example.com` | `user123` |
+
+---
+*Developed as a high-fidelity front-end architecture prototype.*

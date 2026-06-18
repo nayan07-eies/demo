@@ -1,9 +1,8 @@
-import React from 'react';
-import { ShoppingCart, Package, DollarSign, Users, TrendingUp } from 'lucide-react';
+import { ShoppingCart, Package, IndianRupee, Users, TrendingUp } from 'lucide-react';
 
 const Dashboard = () => {
   const stats = [
-    { label: 'Total Revenue', value: '$24,560.00', icon: DollarSign, color: 'bg-green-500', trend: '+12.5%' },
+    { label: 'Total Revenue', value: '₹24,560.00', icon: IndianRupee, color: 'bg-green-500', trend: '+12.5%' },
     { label: 'Total Orders', value: '1,234', icon: ShoppingCart, color: 'bg-blue-500', trend: '+8.2%' },
     { label: 'Active Products', value: '48', icon: Package, color: 'bg-purple-500', trend: '0%' },
     { label: 'Customers', value: '892', icon: Users, color: 'bg-orange-500', trend: '+15.3%' },
@@ -45,7 +44,7 @@ const Dashboard = () => {
                   <p className="text-sm font-medium text-gray-900">New order #ORD-123{i} placed</p>
                   <p className="text-xs text-gray-400">2 minutes ago</p>
                 </div>
-                <span className="text-sm font-bold text-gray-900">$129.00</span>
+                <span className="text-sm font-bold text-gray-900">₹129.00</span>
               </div>
             ))}
           </div>

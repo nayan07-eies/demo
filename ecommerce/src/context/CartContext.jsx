@@ -13,61 +13,38 @@ export const CartProvider = ({ children }) => {
   }, [items]);
 
   const addItem = (product) => {
-    if (product.stock <= 0) {
-      alert(`Sorry, ${product.name} is currently out of stock.`);
-      return;
-    }
-    setItems((prev) => {
-      const existing = prev.find((item) => item.id === product.id);
+    setItems(prev => {
+      const existing = prev.find(item => item.id === product.id);
       if (existing) {
         if (existing.quantity >= product.stock) {
-          alert(`Sorry, only ${product.stock} units of ${product.name} are available.`);
+          alert(`Sorry, only ${product.stock} units are available.`);
           return prev;
         }
-        return prev.map((item) =>
-          item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
-        );
+        return prev.map(item => item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item);
       }
       return [...prev, { ...product, quantity: 1 }];
     });
   };
 
-  const removeItem = (productId) => {
-    setItems((prev) => prev.filter((item) => item.id !== productId));
-  };
-
+  const removeItem = (productId) => setItems(prev => prev.filter(item => item.id !== productId));
+  
   const updateQuantity = (productId, quantity) => {
-    if (quantity <= 0) {
-      removeItem(productId);
-      return;
-    }
-    setItems((prev) => {
-      const item = prev.find((i) => i.id === productId);
-      if (item && quantity > item.stock) {
-        alert(`Sorry, only ${item.stock} units are available.`);
-        return prev;
+    setItems(prev => prev.map(item => {
+      if (item.id === productId) {
+        const stock = item.stock || 0;
+        return { ...item, quantity: Math.min(Math.max(1, quantity), stock) };
       }
-      return prev.map((item) => (item.id === productId ? { ...item, quantity } : item));
-    });
+      return item;
+    }));
   };
 
   const clearCart = () => setItems([]);
 
   const totalItems = items.reduce((sum, item) => sum + item.quantity, 0);
-  const totalPrice = items.reduce((sum, item) => sum + item.price * item.quantity, 0);
+  const totalPrice = items.reduce((sum, item) => sum + (item.price * item.quantity), 0);
 
   return (
-    <CartContext.Provider
-      value={{
-        items,
-        addItem,
-        removeItem,
-        updateQuantity,
-        clearCart,
-        totalItems,
-        totalPrice
-      }}
-    >
+    <CartContext.Provider value={{ items, addItem, removeItem, updateQuantity, clearCart, totalItems, totalPrice }}>
       {children}
     </CartContext.Provider>
   );
@@ -75,8 +52,6 @@ export const CartProvider = ({ children }) => {
 
 export const useCart = () => {
   const context = useContext(CartContext);
-  if (context === undefined) {
-    throw new Error('useCart must be used within a CartProvider');
-  }
+  if (context === undefined) throw new Error('useCart must be used within a CartProvider');
   return context;
 };

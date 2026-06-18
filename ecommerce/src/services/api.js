@@ -33,18 +33,33 @@ export const api = {
   login: async (email, password) => {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        if (email === 'admin@example.com' && password === 'admin123') {
+        const normalizedEmail = email.trim().toLowerCase();
+        const trimmedPassword = password.trim();
+
+        // Check demo accounts first
+        if (normalizedEmail === 'admin@example.com' && trimmedPassword === 'admin123') {
           resolve({ 
             token: 'mock-jwt-admin-123', 
-            user: { name: 'System Admin', email, role: 'admin' } 
+            user: { name: 'System Admin', email: normalizedEmail, role: 'admin' } 
           });
-        } else if (email === 'user@example.com' && password === 'user123') {
+        } else if (normalizedEmail === 'user@example.com' && trimmedPassword === 'user123') {
           resolve({ 
             token: 'mock-jwt-user-456', 
-            user: { name: 'Demo Customer', email, role: 'customer' } 
+            user: { name: 'Demo Customer', email: normalizedEmail, role: 'customer' } 
           });
         } else {
-          reject(new Error('Invalid credentials. Check demo accounts.'));
+          // Check localStorage for registered users
+          const users = JSON.parse(localStorage.getItem('mock_users') || '[]');
+          const user = users.find(u => u.email.toLowerCase() === normalizedEmail && u.password === trimmedPassword);
+          
+          if (user) {
+            resolve({
+              token: `mock-jwt-${user.id}`,
+              user: { name: user.name, email: user.email, role: user.role }
+            });
+          } else {
+            reject(new Error('Invalid credentials. Check demo accounts.'));
+          }
         }
       }, LATENCY);
     });
@@ -55,12 +70,34 @@ export const api = {
       setTimeout(() => {
         if (!name || !email || !password) {
           reject(new Error('All fields are required'));
-        } else {
-          resolve({
-            token: `mock-jwt-new-${Date.now()}`,
-            user: { name, email, role: 'customer' }
-          });
+          return;
         }
+
+        const normalizedEmail = email.trim().toLowerCase();
+        const trimmedPassword = password.trim();
+        const trimmedName = name.trim();
+
+        const users = JSON.parse(localStorage.getItem('mock_users') || '[]');
+        if (users.find(u => u.email.toLowerCase() === normalizedEmail)) {
+          reject(new Error('Email already registered'));
+          return;
+        }
+
+        const newUser = {
+          id: Date.now(),
+          name: trimmedName,
+          email: normalizedEmail,
+          password: trimmedPassword,
+          role: 'customer'
+        };
+
+        users.push(newUser);
+        localStorage.setItem('mock_users', JSON.stringify(users));
+
+        resolve({
+          token: `mock-jwt-new-${newUser.id}`,
+          user: { name: trimmedName, email: normalizedEmail, role: 'customer' }
+        });
       }, LATENCY);
     });
   }

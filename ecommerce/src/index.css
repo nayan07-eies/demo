@@ -1,28 +1,62 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   --font-sans: "Inter", "system-ui", "-apple-system", "sans-serif";
+  
+  /* Map Cyan to the requested Accent Color (#FF6B35) */
+  --color-cyan-50: #fff0ea;
+  --color-cyan-100: #ffded2;
+  --color-cyan-200: #ffc2ab;
+  --color-cyan-300: #ff9d7a;
+  --color-cyan-400: #ff8555;
+  --color-cyan-500: #FF6B35;
+  --color-cyan-600: #e55a2b;
+  --color-cyan-700: #c24119;
+  --color-cyan-800: #9e3415;
+  --color-cyan-900: #7a2c12;
+
+  /* Map Slate Dark colors to the requested Dark Color (#1F2326) */
+  --color-slate-950: #16181b; /* Body background (darker depth) */
+  --color-slate-900: #1F2326; /* Card background (exact requested) */
+  --color-slate-800: #2c3136; /* Hover states / borders */
+  --color-slate-700: #3b4248; /* Lighter borders */
 }
 
 :root {
   color-scheme: light;
 }
 
+html.dark {
+  color-scheme: dark;
+  /* Override white in dark mode to the requested Primary Text color */
+  --color-white: #E0E0E0;
+}
+
 body {
   margin: 0;
   min-height: 100vh;
-  background-color: #f8fafc; /* slate-50 */
-  color: #0f172a; /* slate-900 */
+  background-color: var(--color-slate-50, #f8fafc);
+  color: var(--color-slate-900);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-image: 
-    radial-gradient(circle at 15% 50%, rgba(34, 211, 238, 0.08), transparent 25%),
+    radial-gradient(circle at 15% 50%, rgba(255, 107, 53, 0.08), transparent 25%),
     radial-gradient(circle at 85% 30%, rgba(59, 130, 246, 0.08), transparent 25%);
 }
 
+html.dark body {
+  background-color: var(--color-slate-950);
+  color: var(--color-white);
+  background-image: 
+    radial-gradient(circle at 15% 50%, rgba(255, 107, 53, 0.05), transparent 25%),
+    radial-gradient(circle at 85% 30%, rgba(236, 72, 153, 0.03), transparent 25%);
+}
+
 ::selection {
-  background-color: #22d3ee; /* cyan-400 */
-  color: #0f172a;
+  background-color: var(--color-cyan-500);
+  color: #16181b; /* High contrast for selection */
 }
 
 /* Cool glowing scrollbar */
@@ -30,13 +64,19 @@ body {
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #f1f5f9;
+  background: var(--color-slate-100, #f1f5f9);
+}
+html.dark ::-webkit-scrollbar-track {
+  background: var(--color-slate-950);
 }
 ::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
+  background: var(--color-slate-300, #cbd5e1);
   border-radius: 10px;
 }
+html.dark ::-webkit-scrollbar-thumb {
+  background: var(--color-slate-800);
+}
 ::-webkit-scrollbar-thumb:hover {
-  background: #22d3ee;
-  box-shadow: 0 0 10px rgba(34, 211, 238, 0.5);
+  background: var(--color-cyan-500);
+  box-shadow: 0 0 10px rgba(255, 107, 53, 0.5);
 }

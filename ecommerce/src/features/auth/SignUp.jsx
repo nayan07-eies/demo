@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useState } from 'react';
+import { useNavigate, Link, Navigate } from 'react-router-dom';
 import { api } from '../../services/api';
 import { useAuth } from '../../context/AuthContext';
 import { Lock, Mail, User as UserIcon, AlertCircle } from 'lucide-react';
@@ -12,7 +12,15 @@ const SignUp = () => {
   const [error, setError] = useState(null);
   
   const navigate = useNavigate();
-  const { login } = useAuth();
+  const { login, isAuthenticated, user } = useAuth();
+
+  // If already authenticated, redirect to appropriate dashboard
+  if (isAuthenticated) {
+    if (user?.role === 'admin') {
+      return <Navigate to="/admin" replace />;
+    }
+    return <Navigate to="/account" replace />;
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -32,15 +40,15 @@ const SignUp = () => {
 
   return (
     <div className="max-w-md mx-auto my-20 px-4">
-      <div className="bg-white p-12 rounded-[3rem] border border-slate-200 shadow-2xl shadow-cyan-900/5 relative overflow-hidden">
+      <div className="bg-white dark:bg-slate-900 p-12 rounded-[3rem] border border-slate-200 dark:border-slate-800 shadow-2xl shadow-cyan-900/5 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-cyan-50 to-transparent opacity-50"></div>
         <div className="relative z-10">
           <div className="text-center mb-12">
-            <div className="w-20 h-20 bg-white rounded-3xl flex items-center justify-center mx-auto mb-6 border border-cyan-100 shadow-md shadow-cyan-900/5">
+            <div className="w-20 h-20 bg-white dark:bg-slate-900 rounded-3xl flex items-center justify-center mx-auto mb-6 border border-cyan-100 shadow-md shadow-cyan-900/5">
               <UserIcon className="w-10 h-10 text-cyan-500" />
             </div>
-            <h1 className="text-3xl font-black text-slate-900 uppercase tracking-tight">Join Nexus</h1>
-            <p className="text-slate-500 font-bold uppercase tracking-widest text-[10px] mt-3 leading-relaxed">Initialize Your Account</p>
+            <h1 className="text-3xl font-black text-slate-900 dark:text-white uppercase tracking-tight">Join Nexus</h1>
+            <p className="text-slate-500 dark:text-slate-400 font-bold uppercase tracking-widest text-[10px] mt-3 leading-relaxed">Initialize Your Account</p>
           </div>
 
           {error && (
@@ -52,7 +60,7 @@ const SignUp = () => {
 
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
-              <label className="block text-[10px] font-black uppercase tracking-widest text-slate-500 mb-3 ml-1">Full Name</label>
+              <label className="block text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-400 mb-3 ml-1">Full Name</label>
               <div className="relative">
                 <UserIcon className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
                 <input
@@ -60,14 +68,14 @@ const SignUp = () => {
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder="Alex Mercer"
-                  className="w-full pl-12 pr-6 py-4 bg-slate-50 border border-slate-200 rounded-2xl focus:ring-4 focus:ring-cyan-500/10 focus:border-cyan-500 focus:bg-white transition-all outline-none text-slate-900 font-bold shadow-inner"
+                  className="w-full pl-12 pr-6 py-4 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl focus:ring-4 focus:ring-cyan-500/10 focus:border-cyan-500 focus:bg-white dark:focus:bg-slate-900 transition-all outline-none text-slate-900 dark:text-white font-bold shadow-inner"
                   required
                 />
               </div>
             </div>
 
             <div>
-              <label className="block text-[10px] font-black uppercase tracking-widest text-slate-500 mb-3 ml-1">Email Address</label>
+              <label className="block text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-400 mb-3 ml-1">Email Address</label>
               <div className="relative">
                 <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
                 <input
@@ -75,14 +83,14 @@ const SignUp = () => {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="alex@example.com"
-                  className="w-full pl-12 pr-6 py-4 bg-slate-50 border border-slate-200 rounded-2xl focus:ring-4 focus:ring-cyan-500/10 focus:border-cyan-500 focus:bg-white transition-all outline-none text-slate-900 font-bold shadow-inner"
+                  className="w-full pl-12 pr-6 py-4 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl focus:ring-4 focus:ring-cyan-500/10 focus:border-cyan-500 focus:bg-white dark:focus:bg-slate-900 transition-all outline-none text-slate-900 dark:text-white font-bold shadow-inner"
                   required
                 />
               </div>
             </div>
 
             <div>
-              <label className="block text-[10px] font-black uppercase tracking-widest text-slate-500 mb-3 ml-1">Secure Password</label>
+              <label className="block text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-400 mb-3 ml-1">Secure Password</label>
               <div className="relative">
                 <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
                 <input
@@ -90,7 +98,7 @@ const SignUp = () => {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="••••••••"
-                  className="w-full pl-12 pr-6 py-4 bg-slate-50 border border-slate-200 rounded-2xl focus:ring-4 focus:ring-cyan-500/10 focus:border-cyan-500 focus:bg-white transition-all outline-none text-slate-900 font-bold shadow-inner"
+                  className="w-full pl-12 pr-6 py-4 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl focus:ring-4 focus:ring-cyan-500/10 focus:border-cyan-500 focus:bg-white dark:focus:bg-slate-900 transition-all outline-none text-slate-900 dark:text-white font-bold shadow-inner"
                   required
                 />
               </div>
@@ -99,7 +107,7 @@ const SignUp = () => {
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-slate-900 text-white py-5 rounded-[2rem] font-black uppercase tracking-[0.2em] text-xs hover:bg-cyan-500 hover:text-slate-900 transition-all duration-300 disabled:opacity-50 shadow-lg shadow-slate-200 hover:shadow-[0_0_20px_rgba(34,211,238,0.4)] active:scale-[0.98] mt-4"
+              className="w-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 py-5 rounded-[2rem] font-black uppercase tracking-[0.2em] text-xs hover:bg-cyan-500 hover:text-slate-900 dark:hover:text-white transition-all duration-300 disabled:opacity-50 shadow-lg shadow-slate-200 hover:shadow-[0_0_20px_rgba(34,211,238,0.4)] active:scale-[0.98] mt-4"
             >
               {loading ? 'Processing...' : 'Create Account'}
             </button>
@@ -107,7 +115,7 @@ const SignUp = () => {
 
           <div className="mt-8 text-center">
             <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">
-              Already have an account? <Link to="/login" className="text-cyan-600 hover:text-slate-900 transition-colors">Sign In</Link>
+              Already have an account? <Link to="/login" className="text-cyan-600 hover:text-slate-900 dark:hover:text-white transition-colors">Sign In</Link>
             </p>
           </div>
         </div>

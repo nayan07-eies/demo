@@ -7,23 +7,23 @@ const AdminProducts = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
-
-  const loadProducts = async () => {
-    try {
-      setLoading(true);
-      setError(null);
-      const data = await api.getProducts();
-      setProducts(data);
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'An error occurred');
-    } finally {
-      setLoading(false);
-    }
-  };
+  const [retryCount, setRetryCount] = useState(0);
 
   useEffect(() => {
+    const loadProducts = async () => {
+      try {
+        setLoading(true);
+        setError(null);
+        const data = await api.getProducts();
+        setProducts(data);
+      } catch (err) {
+        setError(err instanceof Error ? err.message : 'An error occurred');
+      } finally {
+        setLoading(false);
+      }
+    };
     loadProducts();
-  }, []);
+  }, [retryCount]);
 
   const filteredProducts = products.filter(p => 
     p.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -35,7 +35,7 @@ const AdminProducts = () => {
       <div className="bg-white p-12 rounded-3xl border shadow-sm text-center">
         <p className="text-red-600 font-medium mb-4">{error}</p>
         <button
-          onClick={() => loadProducts()}
+          onClick={() => setRetryCount(prev => prev + 1)}
           className="bg-blue-600 text-white px-6 py-2 rounded-xl hover:bg-blue-700 transition-colors"
         >
           Retry Loading
@@ -117,7 +117,7 @@ const AdminProducts = () => {
                         {product.category}
                       </span>
                     </td>
-                    <td className="px-10 py-6 font-black text-slate-900">${product.price.toFixed(2)}</td>
+                    <td className="px-10 py-6 font-black text-slate-900">₹{product.price.toFixed(2)}</td>
                     <td className="px-10 py-6">
                       <div className="flex items-center gap-3">
                         <div className={`w-2 h-2 rounded-full ${product.stock > 10 ? 'bg-green-500 ring-4 ring-green-100' : product.stock > 0 ? 'bg-orange-500 ring-4 ring-orange-100' : 'bg-pink-500 ring-4 ring-pink-100'}`}></div>

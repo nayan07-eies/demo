@@ -5,12 +5,17 @@ import { AdminLayout } from './components/layout/AdminLayout';
 import { AuthGuard } from './components/auth/AuthGuard';
 import { AuthProvider } from './context/AuthContext';
 import { CartProvider } from './context/CartContext';
+import { WishlistProvider } from './context/WishlistContext';
+import { ThemeProvider } from './context/ThemeContext';
 
 // Lazy load components
 const Catalog = lazy(() => import('./features/storefront/Catalog'));
 const ProductDetail = lazy(() => import('./features/storefront/ProductDetail'));
 const Cart = lazy(() => import('./features/cart/Cart'));
+const Wishlist = lazy(() => import('./features/wishlist/Wishlist'));
 const Login = lazy(() => import('./features/auth/Login'));
+const SignUp = lazy(() => import('./features/auth/SignUp'));
+const Account = lazy(() => import('./features/user/Account'));
 const Dashboard = lazy(() => import('./features/admin/Dashboard'));
 const AdminProducts = lazy(() => import('./features/admin/AdminProducts'));
 
@@ -22,37 +27,47 @@ const Loading = () => (
 
 function App() {
   return (
-    <AuthProvider>
-      <CartProvider>
-        <BrowserRouter>
-          <Suspense fallback={<Loading />}>
-            <Routes>
-              {/* Storefront Routes */}
-              <Route element={<StorefrontLayout />}>
-                <Route path="/" element={<Catalog />} />
-                <Route path="/product/:id" element={<ProductDetail />} />
-                <Route path="/cart" element={<Cart />} />
-                <Route path="/login" element={<Login />} />
-              </Route>
+    <ThemeProvider>
+      <WishlistProvider>
+        <AuthProvider>
+          <CartProvider>
+            <BrowserRouter>
+              <Suspense fallback={<Loading />}>
+                <Routes>
+                  {/* Storefront Routes - Admins are redirected away */}
+                  <Route element={<StorefrontLayout />}>
+                    <Route path="/" element={<AuthGuard restrictRole="admin"><Catalog /></AuthGuard>} />
+                    <Route path="/product/:id" element={<AuthGuard restrictRole="admin"><ProductDetail /></AuthGuard>} />
+                    <Route path="/cart" element={<AuthGuard restrictRole="admin"><Cart /></AuthGuard>} />
+                    <Route path="/wishlist" element={<AuthGuard restrictRole="admin"><Wishlist /></AuthGuard>} />
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/signup" element={<SignUp />} />
+                    <Route path="/account" element={
+                      <AuthGuard restrictRole="admin">
+                        <Account />
+                      </AuthGuard>
+                    } />
+                  </Route>
 
-              {/* Admin Routes */}
-              <Route
-                path="/admin"
-                element={
-                  <AuthGuard>
-                    <AdminLayout />
-                  </AuthGuard>
-                }
-              >
-                <Route index element={<Dashboard />} />
-                <Route path="products" element={<AdminProducts />} />
-                <Route path="orders" element={<div>Orders Management (TBD)</div>} />
-              </Route>
-            </Routes>
-          </Suspense>
-        </BrowserRouter>
-      </CartProvider>
-    </AuthProvider>
+                  {/* Admin Routes - Only accessible by Admins */}
+                  <Route
+                    path="/admin"
+                    element={
+                      <AuthGuard requireRole="admin">
+                        <AdminLayout />
+                      </AuthGuard>
+                    }
+                  >
+                    <Route index element={<Dashboard />} />
+                    <Route path="products" element={<AdminProducts />} />
+                  </Route>
+                </Routes>
+              </Suspense>
+            </BrowserRouter>
+          </CartProvider>
+        </AuthProvider>
+      </WishlistProvider>
+    </ThemeProvider>
   );
 }
 
