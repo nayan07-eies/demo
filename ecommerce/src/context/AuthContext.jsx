@@ -14,6 +14,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   const logout = () => {
+    // Only clear the auth data. We are saving carts by User ID now!
     localStorage.removeItem('auth_user');
     setUser(null);
   };

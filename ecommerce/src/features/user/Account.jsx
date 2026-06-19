@@ -13,7 +13,7 @@ const Account = () => {
         </div>
         <button 
           onClick={logout}
-          className="inline-flex items-center space-x-3 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white px-6 py-3 rounded-xl font-bold uppercase tracking-widest text-xs hover:bg-slate-50 dark:hover:bg-slate-950 transition-colors shadow-sm"
+          className="inline-flex items-center space-x-3 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white px-6 py-3 rounded-xl font-bold uppercase tracking-widest text-xs hover:bg-slate-50 dark:hover:bg-slate-950 transition-colors shadow-sm focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 dark:focus:ring-offset-slate-900"
         >
           <LogOut className="w-4 h-4" />
           <span>Sign Out</span>
@@ -27,13 +27,13 @@ const Account = () => {
             <div className="w-24 h-24 bg-slate-50 dark:bg-slate-950 rounded-full flex items-center justify-center mb-6 border border-slate-200 dark:border-slate-800 shadow-inner">
               <UserIcon className="w-12 h-12 text-cyan-500" />
             </div>
-            <h2 className="text-2xl font-black text-slate-900 dark:text-white uppercase tracking-tight">{user?.name}</h2>
+            <h2 className="text-2xl font-black text-slate-900 dark:text-white uppercase tracking-tight">{user?.name || 'Guest User'}</h2>
             <div className="flex items-center justify-center gap-2 mt-2 mb-6">
               <Mail className="w-4 h-4 text-slate-400" />
-              <p className="text-slate-500 dark:text-slate-400 font-medium">{user?.email}</p>
+              <p className="text-slate-500 dark:text-slate-400 font-medium">{user?.email || 'No email provided'}</p>
             </div>
             <span className="px-4 py-1.5 bg-cyan-50 text-cyan-600 text-[10px] font-black uppercase tracking-widest rounded-full border border-cyan-100">
-              {user?.role} Account
+              {user?.role || 'Standard'} Account
             </span>
           </div>
         </div>
@@ -49,16 +49,25 @@ const Account = () => {
           </div>
 
           <div className="grid grid-cols-2 gap-6 mt-8">
-            <div className="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col items-center text-center">
-               <ShieldCheck className="w-8 h-8 text-cyan-500 mb-3" />
+            {/* Security Settings Button */}
+            <button 
+              onClick={() => {/* Handle 2FA/Security routing */}}
+              className="w-full bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col items-center text-center hover:bg-slate-50 dark:hover:bg-slate-950 transition-colors focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent group"
+            >
+               <ShieldCheck className="w-8 h-8 text-cyan-500 mb-3 group-hover:scale-110 transition-transform" />
                <span className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest">Account Protected</span>
                <p className="text-xs text-slate-400 mt-2">2FA is enabled on this device.</p>
-            </div>
-            <div className="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col items-center text-center">
-               <UserIcon className="w-8 h-8 text-cyan-500 mb-3" />
+            </button>
+
+            {/* Edit Details Button */}
+            <button 
+              onClick={() => {/* Handle edit details modal/routing */}}
+              className="w-full bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col items-center text-center hover:bg-slate-50 dark:hover:bg-slate-950 transition-colors focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent group"
+            >
+               <UserIcon className="w-8 h-8 text-cyan-500 mb-3 group-hover:scale-110 transition-transform" />
                <span className="text-[10px] font-black text-slate-900 dark:text-white uppercase tracking-widest">Edit Details</span>
                <p className="text-xs text-slate-400 mt-2">Update your billing information.</p>
-            </div>
+            </button>
           </div>
         </div>
       </div>

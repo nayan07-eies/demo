@@ -2,11 +2,13 @@ import { Suspense, lazy } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { StorefrontLayout } from './components/layout/StorefrontLayout';
 import { AdminLayout } from './components/layout/AdminLayout';
+import { ScrollToTop } from './components/layout/ScrollToTop';
 import { AuthGuard } from './components/auth/AuthGuard';
 import { AuthProvider } from './context/AuthContext';
 import { CartProvider } from './context/CartContext';
 import { WishlistProvider } from './context/WishlistContext';
 import { ThemeProvider } from './context/ThemeContext';
+import { ToastProvider } from './context/ToastContext';
 
 // Lazy load components
 const Catalog = lazy(() => import('./features/storefront/Catalog'));
@@ -28,11 +30,13 @@ const Loading = () => (
 function App() {
   return (
     <ThemeProvider>
-      <WishlistProvider>
-        <AuthProvider>
-          <CartProvider>
-            <BrowserRouter>
-              <Suspense fallback={<Loading />}>
+      <ToastProvider>
+          <AuthProvider>
+            <CartProvider>
+              <WishlistProvider>
+              <BrowserRouter>
+                <ScrollToTop />
+                <Suspense fallback={<Loading />}>
                 <Routes>
                   {/* Storefront Routes - Admins are redirected away */}
                   <Route element={<StorefrontLayout />}>
@@ -64,11 +68,13 @@ function App() {
                 </Routes>
               </Suspense>
             </BrowserRouter>
-          </CartProvider>
-        </AuthProvider>
-      </WishlistProvider>
-    </ThemeProvider>
-  );
-}
+            </WishlistProvider>
+            </CartProvider>
+            </AuthProvider>
+            
+            </ToastProvider>
+            </ThemeProvider>
+            );
+            }
 
-export default App;
+            export default App;
