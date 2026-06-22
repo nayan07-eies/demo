@@ -1,8 +1,9 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { api } from '../../services/api';
 import { useCart } from '../../context/CartContext';
 import { ChevronLeft, ShieldCheck, Truck, RefreshCcw, ShoppingCart } from 'lucide-react';
+import ReviewList from '../reviews/ReviewList';
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -44,20 +45,22 @@ const ProductDetail = () => {
   }, [id, navigate, retryCount]);
 
   if (loading) {
-    return <div className="animate-pulse flex flex-col md:flex-row gap-12">
-      <div className="md:w-1/2 aspect-square bg-gray-200 rounded-2xl"></div>
-      <div className="md:w-1/2 space-y-4">
-        <div className="h-8 bg-gray-200 w-3/4"></div>
-        <div className="h-4 bg-gray-200 w-1/4"></div>
-        <div className="h-32 bg-gray-200 w-full"></div>
+    return (
+      <div className="animate-pulse flex flex-col md:flex-row gap-12">
+        <div className="md:w-1/2 aspect-square bg-gray-200 dark:bg-slate-800 rounded-2xl"></div>
+        <div className="md:w-1/2 space-y-4">
+          <div className="h-8 bg-gray-200 dark:bg-slate-800 w-3/4"></div>
+          <div className="h-4 bg-gray-200 dark:bg-slate-800 w-1/4"></div>
+          <div className="h-32 bg-gray-200 dark:bg-slate-800 w-full"></div>
+        </div>
       </div>
-    </div>;
+    );
   }
 
   if (error) {
     return (
-      <div className="text-center py-20 bg-red-50 rounded-2xl border border-red-100 max-w-2xl mx-auto">
-        <p className="text-red-600 font-medium mb-4">{error}</p>
+      <div className="text-center py-20 bg-red-50 dark:bg-red-900/20 rounded-2xl border border-red-100 dark:border-red-900/50 max-w-2xl mx-auto">
+        <p className="text-red-600 dark:text-red-400 font-medium mb-4">{error}</p>
         <button
           onClick={() => setRetryCount(prev => prev + 1)}
           className="bg-red-600 text-white px-6 py-2 rounded-lg hover:bg-red-700 transition-colors"
@@ -93,16 +96,16 @@ const ProductDetail = () => {
         {/* Content Section */}
         <div className="col-span-12 lg:col-span-5 flex flex-col justify-center">
           <div>
-            <span className="inline-block px-4 py-1.5 bg-cyan-50 text-cyan-600 text-[10px] font-black uppercase tracking-[0.2em] rounded-full mb-6 border border-cyan-100">
+            <span className="inline-block px-4 py-1.5 bg-cyan-50 dark:bg-cyan-900/20 text-cyan-600 dark:text-cyan-400 text-[10px] font-black uppercase tracking-[0.2em] rounded-full mb-6 border border-cyan-100 dark:border-cyan-900/50">
               {product.category}
             </span>
             <h1 className="text-5xl font-black text-slate-900 dark:text-white mb-6 tracking-tight uppercase leading-[1.1]">{product.name}</h1>
             <div className="flex items-center gap-4 mb-10">
               <p className="text-4xl font-black text-slate-900 dark:text-white">₹{product.price.toFixed(2)}</p>
               {product.stock > 0 ? (
-                <span className="px-3 py-1 bg-green-50 text-green-600 text-[10px] font-black uppercase tracking-widest rounded-lg border border-green-200">Operational</span>
+                <span className="px-3 py-1 bg-green-50 dark:bg-green-900/20 text-green-600 dark:text-green-400 text-[10px] font-black uppercase tracking-widest rounded-lg border border-green-200 dark:border-green-900/50">Operational</span>
               ) : (
-                <span className="px-3 py-1 bg-pink-50 text-pink-600 text-[10px] font-black uppercase tracking-widest rounded-lg border border-pink-200">Offline</span>
+                <span className="px-3 py-1 bg-pink-50 dark:bg-pink-900/20 text-pink-600 dark:text-pink-400 text-[10px] font-black uppercase tracking-widest rounded-lg border border-pink-200 dark:border-pink-900/50">Offline</span>
               )}
             </div>
 
@@ -147,6 +150,11 @@ const ProductDetail = () => {
             </div>
           </div>
         </div>
+      </div>
+
+      {/* REVIEWS SECTION INTEGRATION */}
+      <div className="mt-20">
+        <ReviewList productId={id} />
       </div>
     </div>
   );

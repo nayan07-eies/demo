@@ -3,6 +3,7 @@ import { PRODUCTS } from './mockData';
 const LATENCY = 800;
 const FAILURE_RATE = 0.1;
 
+// Helper to simulate network conditions
 const simulateNetwork = (data) => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
@@ -16,6 +17,7 @@ const simulateNetwork = (data) => {
 };
 
 export const api = {
+  // --- PRODUCT ENDPOINTS ---
   getProducts: async () => {
     return simulateNetwork([...PRODUCTS]);
   },
@@ -30,6 +32,7 @@ export const api = {
     return simulateNetwork([]);
   },
 
+  // --- AUTHENTICATION ENDPOINTS ---
   login: async (email, password) => {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
@@ -99,6 +102,30 @@ export const api = {
           user: { name: trimmedName, email: normalizedEmail, role: 'customer' }
         });
       }, LATENCY);
+    });
+  },
+
+  // --- REVIEWS & RATINGS ENDPOINTS ---
+  getProductReviews: async (productId) => {
+    return new Promise(resolve => {
+      setTimeout(() => {
+        const allReviews = JSON.parse(localStorage.getItem('app_reviews')) || [];
+        resolve(allReviews.filter(review => review.productId === productId));
+      }, 300); // slightly faster latency for reviews
+    });
+  },
+
+  submitReview: async (reviewObj) => {
+    return new Promise(resolve => {
+      setTimeout(() => {
+        const allReviews = JSON.parse(localStorage.getItem('app_reviews')) || [];
+        const updatedReviews = [...allReviews, reviewObj];
+        
+        localStorage.setItem('app_reviews', JSON.stringify(updatedReviews));
+        
+        // Return just the reviews for this specific product to update the UI
+        resolve(updatedReviews.filter(review => review.productId === reviewObj.productId));
+      }, 300);
     });
   }
 };
