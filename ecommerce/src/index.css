@@ -78,7 +78,7 @@ html.dark ::-webkit-scrollbar-track {
 ::-webkit-scrollbar-thumb {
   background: var(--color-slate-300, #cbd5e1);
   border-radius: 10px;
-}
+} 
 html.dark ::-webkit-scrollbar-thumb {
   background: var(--color-slate-800);
 }

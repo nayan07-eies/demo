@@ -70,6 +70,7 @@ export const CartProvider = ({ children }) => {
     }));
   };
 
+  // Here is your clearCart function, perfectly positioned!
   const clearCart = () => setItems([]);
 
   const totalItems = items.reduce((sum, item) => sum + item.quantity, 0);

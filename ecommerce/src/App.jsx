@@ -9,6 +9,8 @@ import { CartProvider } from './context/CartContext';
 import { WishlistProvider } from './context/WishlistContext';
 import { ThemeProvider } from './context/ThemeContext';
 import { ToastProvider } from './context/ToastContext';
+import Checkout from './features/checkout/Checkout';
+import OrderSuccess from './features/checkout/OrderSuccess';
 
 // Lazy load components
 const Catalog = lazy(() => import('./features/storefront/Catalog'));
@@ -40,6 +42,8 @@ function App() {
                 <Routes>
                   {/* Storefront Routes - Admins are redirected away */}
                   <Route element={<StorefrontLayout />}>
+                  <Route path="/checkout" element={<Checkout />} />
+                    <Route path="/order-confirmation/:id" element={<OrderSuccess />} />
                     <Route path="/" element={<AuthGuard restrictRole="admin"><Catalog /></AuthGuard>} />
                     <Route path="/product/:id" element={<AuthGuard restrictRole="admin"><ProductDetail /></AuthGuard>} />
                     <Route path="/cart" element={<AuthGuard restrictRole="admin"><Cart /></AuthGuard>} />
@@ -51,6 +55,7 @@ function App() {
                         <Account />
                       </AuthGuard>
                     } />
+                    
                   </Route>
 
                   {/* Admin Routes - Only accessible by Admins */}

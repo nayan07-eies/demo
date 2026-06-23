@@ -127,5 +127,39 @@ export const api = {
         resolve(updatedReviews.filter(review => review.productId === reviewObj.productId));
       }, 300);
     });
-  }
+  },
+  // Add these inside the `export const api = { ... }` object
+
+  // --- ORDER ENDPOINTS ---
+  placeOrder: async (orderData) => {
+    return new Promise(resolve => {
+      setTimeout(() => {
+        const orders = JSON.parse(localStorage.getItem('app_orders')) || [];
+        const newOrder = {
+          id: `NEXUS-${Math.floor(Math.random() * 900000) + 100000}`, // e.g., NEXUS-458921
+          date: new Date().toISOString(),
+          status: 'Processing',
+          ...orderData
+        };
+        
+        orders.push(newOrder);
+        localStorage.setItem('app_orders', JSON.stringify(orders));
+        resolve(newOrder);
+      }, 1500); // Simulate secure payment processing latency
+    });
+  },
+
+  getOrderById: async (orderId) => {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        const orders = JSON.parse(localStorage.getItem('app_orders')) || [];
+        const order = orders.find(o => o.id === orderId);
+        if (order) {
+          resolve(order);
+        } else {
+          reject(new Error('Order sequence not found in database.'));
+        }
+      }, 500);
+    });
+  },
 };

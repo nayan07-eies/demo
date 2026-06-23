@@ -1,9 +1,13 @@
 import { Link } from 'react-router-dom';
 import { useCart } from '../../context/CartContext';
 import { Trash2, Plus, Minus, ArrowRight, ShoppingBag, ShieldCheck } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const Cart = () => {
   const { items, removeItem, updateQuantity, totalPrice } = useCart();
+  
+  // 1. ✨ INITIALIZE NAVIGATE HOOK HERE
+  const navigate = useNavigate(); 
 
   if (items.length === 0) {
     return (
@@ -92,10 +96,16 @@ const Cart = () => {
                 <span className="text-4xl font-black text-white">₹{totalPrice.toFixed(2)}</span>
               </div>
             </div>
-            <button className="w-full py-6 bg-cyan-500 hover:bg-cyan-400 text-slate-950 rounded-2xl font-black uppercase tracking-widest transition-all duration-300 shadow-[0_0_20px_rgba(34,211,238,0.3)] hover:shadow-[0_0_30px_rgba(34,211,238,0.5)] active:scale-[0.98] flex items-center justify-center gap-3">
+            
+            {/* 2. ✨ ADD THE ONCLICK EVENT TO THIS BUTTON */}
+            <button 
+              onClick={() => navigate('/checkout')}
+              className="w-full py-6 bg-cyan-500 hover:bg-cyan-400 text-slate-950 rounded-2xl font-black uppercase tracking-widest transition-all duration-300 shadow-[0_0_20px_rgba(34,211,238,0.3)] hover:shadow-[0_0_30px_rgba(34,211,238,0.5)] active:scale-[0.98] flex items-center justify-center gap-3"
+            >
               <span>Execute Checkout</span>
               <ArrowRight className="w-5 h-5" />
             </button>
+
             <div className="mt-8 text-center text-slate-400 flex items-center justify-center gap-2">
               <ShieldCheck className="w-4 h-4" />
               <span className="text-[10px] font-black uppercase tracking-widest">Encrypted Protocol</span>
